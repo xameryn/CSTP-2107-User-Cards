@@ -1,38 +1,201 @@
+:root {
+  --background-color: rgb(45, 121, 119);
+  --primary-color: rgb(59, 174, 169);
+  --secondary-color: rgb(25, 36, 42);
+  --hover-color: rgb(48, 202, 195);
+  --primary-text-color: rgb(255 255 255);
+  --secondary-text-color: rgb(25, 36, 42);
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --baked-shadow-color: rgb(47, 139, 135);
+}
+
 .App {
   text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--background-color);
+  height: 100vh
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (max-width: 1080px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  width: 100vw - 50px;
+  margin: 0;
+  height: 80px;
+  background-color: var(--secondary-color);
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+h1 {
+  color: var(--primary-text-color);
+  font-weight: 100;
+  font-size: 2.2rem;
+}
+
+a {
+  color: var(--primary-text-color);
+  font-weight: 100;
+  font-size: 2.2rem;
+  text-decoration: none;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-color);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 8px 8px var(--shadow-color);
+}
+
+.card:hover {
+  background-color: var(--hover-color);
+  transition: background-color 0.15s ease;
+}
+
+.avatar {
+  width: 75px;
+  height: 75px;
+  border-radius: 8px;
+  margin-right: 20px;
+  object-fit: cover;
+}
+
+.info {
+  text-align: left;
+}
+
+h4 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--primary-text-color);
+}
+
+p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--primary-text-color);
+}
+
+.modal {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
-.App-link {
-  color: #61dafb;
-}
+.modal-content {
+  background-color: var(--baked-shadow-color);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px var(--shadow-color);
+  position: relative;
+  max-width: 500px;
+  width: 90%;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .modal-top-color {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    background-color: var(--primary-color);
+    margin-left: -20px;
+    border-radius: 12px;
+    width: 100%;
+    height: 255px;
+    box-shadow: 0 6px 6px var(--shadow-color);
   }
-  to {
-    transform: rotate(360deg);
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    color: var(--primary-text-color);
+    cursor: pointer;
+    z-index: 4;
+    background-color: var(--shadow-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .close:hover {
+    /* color: var(--hover-color); */
+    background-color: var(--hover-color);
+    transition: color 0.3s ease, background-color 0.2s ease;
+  }
+
+  .avatar-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 20px;
+    margin-right: 0px;
+    object-fit: cover;
+    position: relative;
+    z-index: 3;
+    border: 8px solid white;
+  }
+  
+  .avatar-svg {
+    position: absolute;
+    width: calc(100% + 40px);
+    top: 0;
+    left: -20px;
+    z-index: 2;
+  }
+
+  .info {
+    text-align: center;
+    position: relative;
+    z-index: 5;
+
+    h4 {
+      padding: 10px;
+      font-size: 2rem;
+    }
+
+    p {
+      /* background-color: var(--shadow-color); */
+      padding: 15px;
+      margin: -20px;
+      margin-top: 0px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
   }
 }
